@@ -1,5 +1,6 @@
 #ifndef FILLIT_H
 # define FILLIT_H
-#include "../libft/includes/libft.h"
+
+# include "libft.h"
 
 #endif
