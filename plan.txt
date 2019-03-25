@@ -1,7 +1,5 @@
 1] Algo
-	Possibilités = n! de dominos -> problème pour les factorielles > 13 ou 20
-	 - Récupérer le domino le plus long en longueur et en largeur
-	 - Le mettre en haut d'un tableau x, y
+	Possibilités = suite géométrique !  de dominos -> problème pour les factorielles > 13 ou 20
 		
 2] Lecture du fichier
 	A] Main
@@ -16,3 +14,8 @@
 			- pas de '\n' entre deux carré de 5 par 4 Sauf pour le dernier
 			 (4 * n + n-1)
 			- carré pas de taille de 5 par 4
+3] Structure
+	- mensuration du triomino
+	- numéro du triomino
+	- caractère correspondant
+
