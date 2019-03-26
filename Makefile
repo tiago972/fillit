@@ -13,14 +13,14 @@ NAME = fillit
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBCREATOR)
-	$(CC) $(CFLAGS) -o $(NAME) $(filter $^, $(OBJ)) -I $(INCL) -L$(LIBDIR) -lft
+$(NAME): $(OBJ) | lib
+	$(CC) $(CFLAGS) -o $(NAME) $? -L$(LIBDIR) -lft
 
-$(OBJDIR)/%.o : $(SRCDIR)/%.c
+$(OBJDIR)/%.o : $(SRCDIR)/%.c  
 	mkdir -p $(OBJDIR)
 	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL)
 
-$(LIBDIR)/%.a:
+lib:
 	make -C $(LIBDIR)/
 
 cleanlib:
