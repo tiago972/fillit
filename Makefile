@@ -12,8 +12,8 @@ NAME = fillit
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB)
-	$(CC) $(CFLAGS) -o $(NAME) $(filter $?, $(OBJ)) -I $(INCL) -L$(LIBDIR) -$(LIB)
+$(NAME): $(OBJ) | $(LIB)
+	$(CC) $(CFLAGS) -o $(NAME) $? -I $(INCL) -L$(LIBDIR) -$(LIB)
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
