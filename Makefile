@@ -5,22 +5,23 @@ SRCDIR = ./srcs
 SRC = main.c
 INCL = ./includes
 LIBDIR = ./libft
-LIB = lft
+LIB = libft.a
+LIBCREATOR = $(addprefix $(LIBDIR)/, $(LIB))
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(basename $(SRC))))
 NAME = fillit
 
 all: $(NAME)
 
-$(NAME): $(OBJ) | $(LIB)
-	$(CC) $(CFLAGS) -o $(NAME) $? -I $(INCL) -L$(LIBDIR) -$(LIB)
+$(NAME): $(OBJ) $(LIBCREATOR)
+	$(CC) $(CFLAGS) -o $(NAME) $(filter $^, $(OBJ)) -I $(INCL) -L$(LIBDIR) -lft
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	mkdir -p $(OBJDIR)
 	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL)
 
-$(LIB): 
-	@make -C $(LIBDIR)/
+$(LIBDIR)/%.a:
+	make -C $(LIBDIR)/
 
 cleanlib:
 	make clean -C $(LIBDIR)/
