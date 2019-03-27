@@ -38,9 +38,9 @@ $(OBJDIR_LIB)/%.o : $(SRCDIR_LIB)/%.c
 	$(CC) -o $@ -c $< $(INC_LIB)
 
 clean_lib: 
-	rm -rf $(subst $(LIB_DIR)/,, $(OBJDIR_LIB))
+	rm -rf $(OBJDIR_LIB)
 
 fclean_lib: clean_lib
-	rm -rf $(subst $(LIB_DIR)/,, $(NAME_LIB))
+	rm -rf $(NAME_LIB)
 
 re_LIB: fclean_lib all_lib
