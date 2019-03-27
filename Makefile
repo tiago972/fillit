@@ -4,35 +4,20 @@ OBJDIR = objs
 SRCDIR = ./srcs
 SRC = main.c
 INCL = ./includes
-LIBDIR = ./libft
-LIB = libft.a
 LIBCREATOR = $(addprefix $(LIBDIR)/, $(LIB))
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))
 OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(basename $(SRC))))
 NAME = fillit
+include libft/Makefile
 
 all: $(NAME)
 
-$(NAME): $(OBJ) | lib
-	$(CC) $(CFLAGS) -o $(NAME) $? -L$(LIBDIR) -lft
+$(NAME): $(OBJ) $(NAME_LIB)
+	$(CC) $(CFLAGS) -o $(NAME) $^ $(NAME_LIB)
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c  
 	mkdir -p $(OBJDIR)
-	$(CC) -o $@ -c $< $(CFLAGS) -I $(INCL)
-
-lib:
-	make -C $(LIBDIR)/
-
-cleanlib:
-	make clean -C $(LIBDIR)/
-
-fcleanlib:
-	make clean -C $(LIBDIR)/
-
-makerelib:relib all
-
-relib:
-	make re -C $(LIBDIR)/
+	$(CC) -o $@ -c $? $(CFLAGS) -I $(INCL)
 
 clean: 
 	rm -rf $(OBJDIR)

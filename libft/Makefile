@@ -1,8 +1,9 @@
-CC = clang 
-CFLAGS = -Wall -Wextra -Werror -I $(INCL)
-OBJDIR = objs
-SRCDIR = ./srcs
-SRC = ft_putchar.c ft_putstr.c ft_putnbr.c \
+LIB_DIR = ./libft
+NAME_LIB = ./$(LIB_DIR)/libft.a
+INCL_LIB = -I ./$(LIB_DIR)/includes
+OBJDIR_LIB = ./$(LIB_DIR)/objs
+SRCDIR_LIB = ./$(LIB_DIR)/srcs
+SRC_LIB = ft_putchar.c ft_putstr.c ft_putnbr.c \
 	   ft_strcat.c ft_strlen.c ft_strdup.c \
 	   ft_strcmp.c ft_atoi.c ft_memset.c \
 	   ft_bzero.c ft_memcpy.c ft_memchr.c \
@@ -23,26 +24,23 @@ SRC = ft_putchar.c ft_putstr.c ft_putnbr.c \
 	   ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
 	   ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 	   ft_realloc.c ft_putchar_err.c ft_putstr_err.c
-INCL = ./includes
-SRCS = $(addprefix $(SRCDIR)/, $(SRC))
-OBJ = $(addprefix $(OBJDIR)/, $(addsuffix .o, $(basename $(SRC))))
-NAME = libft.a
+SRCS_LIB = $(addprefix $(SRCDIR_LIB)/, $(SRC_LIB))
+OBJ_LIB = $(addprefix $(OBJDIR_LIB)/, $(addsuffix .o, $(basename $(SRC_LIB))))
 
-all: $(NAME)
+all: $(NAME_LIB)
 
-$(NAME): $(OBJ)
-	ar rc $(NAME) $?
-	ranlib $(NAME)
+$(NAME_LIB): $(OBJ_LIB)
+	ar rc $(NAME_LIB) $?
+	ranlib $(NAME_LIB)
 
-$(OBJDIR)/%.o : $(SRCDIR)/%.c
-	mkdir -p $(OBJDIR)
-	$(CC) -o $@ -c $< $(CFLAGS) 
+$(OBJDIR_LIB)/%.o : $(SRCDIR_LIB)/%.c
+	mkdir -p $(OBJDIR_LIB)
+	$(CC) -o $@ -c $< $(INC_LIB)
 
-clean: 
-	rm -f $(OBJ)
-	rm -rf $(OBJDIR)
+clean_lib: 
+	rm -rf $(subst $(LIB_DIR)/,, $(OBJDIR_LIB))
 
-fclean: clean
-	rm -f $(NAME)
+fclean_lib: clean_lib
+	rm -rf $(subst $(LIB_DIR)/,, $(NAME_LIB))
 
-re: fclean all
+re_LIB: fclean_lib all_lib
