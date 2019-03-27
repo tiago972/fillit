@@ -1,8 +1,8 @@
-LIB_DIR = ./libft
-NAME_LIB = ./$(LIB_DIR)/libft.a
+LIB_DIR = libft
+NAME_LIB = $(LIB_DIR)/libft.a
 INCL_LIB = -I ./$(LIB_DIR)/includes
-OBJDIR_LIB = ./$(LIB_DIR)/objs
-SRCDIR_LIB = ./$(LIB_DIR)/srcs
+OBJDIR_LIB = $(LIB_DIR)/objs
+SRCDIR_LIB = $(LIB_DIR)/srcs
 SRC_LIB = ft_putchar.c ft_putstr.c ft_putnbr.c \
 	   ft_strcat.c ft_strlen.c ft_strdup.c \
 	   ft_strcmp.c ft_atoi.c ft_memset.c \
@@ -30,17 +30,21 @@ OBJ_LIB = $(addprefix $(OBJDIR_LIB)/, $(addsuffix .o, $(basename $(SRC_LIB))))
 all: $(NAME_LIB)
 
 $(NAME_LIB): $(OBJ_LIB)
-	ar rc $(NAME_LIB) $?
-	ranlib $(NAME_LIB)
+	@ar rc $(NAME_LIB) $?
+	@ranlib $(NAME_LIB)
+	@echo "\n\033[38;5;4;1;4m$(NAME_LIB)\033[0m compiled successfully\n" 
 
 $(OBJDIR_LIB)/%.o : $(SRCDIR_LIB)/%.c
-	mkdir -p $(OBJDIR_LIB)
-	$(CC) -o $@ -c $< $(INC_LIB)
+	@mkdir -p $(OBJDIR_LIB)
+	@$(CC) -o $@ -c $< $(INC_LIB)
+	@echo "\033[38;5;82m$@\033[0m has been created" 
 
 clean_lib: 
-	rm -rf $(OBJDIR_LIB)
+	@rm -rf $(OBJDIR_LIB)
+	@echo "\033[38;5;208m$(OBJDIR_LIB)\033[0m has been deleted" 
 
 fclean_lib: clean_lib
-	rm -rf $(NAME_LIB)
+	@rm -rf $(NAME_LIB)
+	@echo "\033[38;5;208m$(NAME_LIB)\033[0m has been deleted" 
 
 re_lib: fclean_lib $(NAME_LIB)

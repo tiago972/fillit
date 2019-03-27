@@ -13,17 +13,21 @@ include libft/Makefile
 all: $(NAME)
 
 $(NAME): $(OBJ) $(NAME_LIB)
-	$(CC) $(CFLAGS) -o $(NAME) $^
+	@$(CC) $(CFLAGS) -o $(NAME) $^
+	@echo "\n\033[38;5;1;4;1m$(NAME)\033[0m is ready to be used\n"
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c  
-	mkdir -p $(OBJDIR)
-	$(CC) -o $@ -c $? $(CFLAGS) -I $(INCL)
+	@mkdir -p $(OBJDIR)
+	@echo "\033[38;5;82m$@\033[0m has been created" 
+	@$(CC) -o $@ -c $? $(CFLAGS) -I $(INCL)
 
 clean: 
-	rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR)
+	@echo "\033[38;5;208m$(OBJDIR)\033[0m has been deleted" 
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\033[38;5;208m$(NAME)\033[0m has been deleted" 
 
 re: fclean all
 
