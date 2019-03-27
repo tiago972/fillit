@@ -26,3 +26,15 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+fclean_all: fclean_lib fclean
+
+re_all: fclean_lib re
+
+debug:
+	$(CC) -g3 $(CFLAGS) -o $(NAME) $(OBJ) $(NAME_LIB)
+
+sanitize:
+	$(CC) -fsanitize=address -fno-omit-frame-pointer -g3 $(CFLAGS) -o $(NAME) $(OBJ) $(NAME_LIB) 
+
+

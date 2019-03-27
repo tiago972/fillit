@@ -43,4 +43,4 @@ clean_lib:
 fclean_lib: clean_lib
 	rm -rf $(NAME_LIB)
 
-re_LIB: fclean_lib all_lib
+re_lib: fclean_lib $(NAME_LIB)
