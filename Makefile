@@ -13,7 +13,7 @@ include libft/Makefile
 all: $(NAME)
 
 $(NAME): $(OBJ) $(NAME_LIB)
-	$(CC) $(CFLAGS) -o $(NAME) $^ $(NAME_LIB)
+	$(CC) $(CFLAGS) -o $(NAME) $^
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.c  
 	mkdir -p $(OBJDIR)
