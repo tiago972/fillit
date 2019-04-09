@@ -1,8 +1,12 @@
 CC = clang 
-CFLAGS = -Wall -Wextra -Werror -I $(INCL)
+CFLAGS = -g3 -Wall -Wextra -Werror -I $(INCL)
 OBJDIR = objs
 SRCDIR = ./srcs
-SRC = main.c
+SRC = main.c \
+	  error_handler.c \
+	  parsing.c \
+	  print.c \
+	  bits.c
 INCL = ./includes
 LIBCREATOR = $(addprefix $(LIBDIR)/, $(LIB))
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))

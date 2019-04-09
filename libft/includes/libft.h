@@ -71,6 +71,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				*ft_realloc(void *ptr, size_t new_size);
 void				ft_putchar_err(char c);
-void				ft_putstr_err(char *s);
+void				ft_putstr_err(const char *s);
+void				ft_lstadd_back(t_list **begin_list, t_list *elem);
 
 #endif

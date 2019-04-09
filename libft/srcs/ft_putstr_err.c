@@ -1,6 +1,6 @@
 #include "../includes/libft.h"
 
-void	ft_putstr(const char *str)
+void	ft_putstr_err(const char *str)
 {
 	char *cpy;
 

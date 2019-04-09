@@ -23,7 +23,8 @@ SRC_LIB = ft_putchar.c ft_putstr.c ft_putnbr.c \
 	   ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 	   ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
 	   ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
-	   ft_realloc.c ft_putchar_err.c ft_putstr_err.c
+	   ft_realloc.c ft_putchar_err.c ft_putstr_err.c \
+	   ft_lstadd_back.c
 SRCS_LIB = $(addprefix $(SRCDIR_LIB)/, $(SRC_LIB))
 OBJ_LIB = $(addprefix $(OBJDIR_LIB)/, $(addsuffix .o, $(basename $(SRC_LIB))))
 
